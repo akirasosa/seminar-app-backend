@@ -1,0 +1,26 @@
+spring:
+  main:
+    banner-mode: 'OFF'
+  profiles:
+    active: dev
+  jooq:
+    sql-dialect: mysql
+---
+spring:
+  profiles: dev
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:./db/dev;MODE=MySQL
+    username: sa
+    password:
+---
+spring:
+  profiles: dev2
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: org.mariadb.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seminar-app
+    username: root
+    password:
+logging:
+  config: classpath:logback-prod.xml
